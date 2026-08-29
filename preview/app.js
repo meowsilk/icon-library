@@ -480,6 +480,105 @@ function copyBtn(label, value) {
   return item;
 }
 
+function fileSafe(name) {
+  return String(name || "icon").replace(/[^\w.-]+/g, "-").replace(/^-+|-+$/g, "") || "icon";
+}
+
+function iconFileName(col, icon, style) {
+  const base = fileSafe(icon.name);
+  if (col.kind === "svg" && icon.path) {
+    const ext = (icon.path.split(".").pop() || "svg").toLowerCase();
+    return `${base}.${ext}`;
+  }
+  if (style?.id && style.id !== "solid") return `${base}-${fileSafe(style.id)}.png`;
+  return `${base}.png`;
+}
+
+function canDownloadIcon(col, icon) {
+  return Boolean((col.kind === "svg" && icon.path) || icon.unicode || (col.kind === "bdf" && icon.bitmap));
+}
+
+function triggerDownload(href, filename) {
+  const a = document.createElement("a");
+  a.href = href;
+  a.download = filename;
+  a.rel = "noopener";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+function canvasPng(canvas) {
+  return new Promise((resolve, reject) => {
+    canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error("png"))), "image/png");
+  });
+}
+
+async function rasterizeGlyph(col, icon, style) {
+  if (col.kind === "bdf") {
+    const canvas = document.createElement("canvas");
+    drawBdf(icon, canvas, 16);
+    return canvasPng(canvas);
+  }
+  if (col.kind === "fa") ensureFaGlyphFont(col, style);
+  else ensureFontFace(col);
+  const family = col.kind === "fa" ? faFamilyName(col, style) : col.fontFamily;
+  const ch = String.fromCodePoint(parseInt(icon.unicode, 16));
+  const spec = `${style?.weight || 400} 448px "${family}"`;
+  try {
+    await document.fonts.load(spec);
+  } catch (_) { /* draw anyway */ }
+  await document.fonts.ready;
+  const size = 512;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, size, size);
+  ctx.fillStyle = "#eceae4";
+  ctx.font = spec;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(ch, size / 2, size / 2);
+  return canvasPng(canvas);
+}
+
+async function downloadCurrentIcon(col, icon, style) {
+  const name = iconFileName(col, icon, style);
+  if (col.kind === "svg" && icon.path) {
+    triggerDownload(`../${icon.path}`, name);
+    return;
+  }
+  const blob = await rasterizeGlyph(col, icon, style);
+  const href = URL.createObjectURL(blob);
+  triggerDownload(href, name);
+  setTimeout(() => URL.revokeObjectURL(href), 2000);
+}
+
+function downloadBtn(col, icon, style) {
+  const name = iconFileName(col, icon, style);
+  const isFile = col.kind === "svg" && icon.path;
+  const el = document.createElement(isFile ? "a" : "button");
+  el.className = "download";
+  el.textContent = `Download ${name}`;
+  if (isFile) {
+    el.href = `../${icon.path}`;
+    el.download = name;
+  } else {
+    el.type = "button";
+    el.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      el.disabled = true;
+      try {
+        await downloadCurrentIcon(col, icon, style);
+      } finally {
+        el.disabled = false;
+      }
+    });
+  }
+  return el;
+}
+
 function renderDetail() {
   const host = $("detail");
   const workspace = document.querySelector(".workspace");
@@ -501,6 +600,7 @@ function renderDetail() {
     sub.className = "muted";
     sub.textContent = `${col.name}${style ? ` · ${style.label}` : ""}`;
     host.appendChild(sub);
+    if (canDownloadIcon(col, icon)) host.appendChild(downloadBtn(col, icon, style));
     const kv = document.createElement("div");
     kv.className = "kv";
     const cls = className(col, icon, style);

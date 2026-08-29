@@ -21,7 +21,7 @@ Locally:
 python serve.py
 ```
 
-Opens `http://127.0.0.1:8765/preview/`. **All sets** searches every icon collection. Rebuild after adding files:
+Opens `http://127.0.0.1:8765/preview/`. Click an icon, then **Download** to save just that file. **All sets** searches every icon collection. Rebuild after adding files:
 
 ```bash
 python tools/build_catalog.py

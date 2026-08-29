@@ -79,7 +79,7 @@ body {
   margin-bottom: 18px;
 }
 
-.tab, .chip, .copy, .icon-cell, .font-card, .ref-card, .collection {
+.tab, .chip, .copy, .download, .icon-cell, .font-card, .ref-card, .collection {
   border: 1px solid var(--border);
   background: var(--elevated);
   color: var(--text);
@@ -222,7 +222,7 @@ body {
   padding: 10px 6px 8px;
 }
 
-.icon-cell:hover, .font-card:hover, .copy:hover, .tab:hover, .chip:hover, .collection:hover {
+.icon-cell:hover, .font-card:hover, .copy:hover, .download:hover, .tab:hover, .chip:hover, .collection:hover {
   border-color: #4a4943;
 }
 
@@ -285,6 +285,22 @@ body {
 }
 
 .detail .muted { color: var(--muted); margin-bottom: 14px; }
+
+.download {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 10px;
+  margin-bottom: 14px;
+  border-radius: var(--radius);
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+.download:hover { border-color: var(--accent); }
+.download:disabled { opacity: 0.55; cursor: wait; }
 
 .kv {
   display: grid;
