@@ -1,0 +1,6 @@
+target/crosshair def: U+0041
+Eye def: U+0042
+Globe/earth def: U+0043
+ak/weapon def: U+0044
+misc/sliders def: U+0045
+gear/settings def: U+0046

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ff0l icon library</title>
+  <link rel="stylesheet" href="app.css">
+  <link id="fa-core" rel="stylesheet">
+  <link id="fa-style" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <aside class="nav">
+      <div class="brand">
+        <div class="brand-mark">ff</div>
+        <div>
+          <div class="brand-name">ff0l icon library</div>
+          <div class="brand-sub" id="counts">loading</div>
+        </div>
+      </div>
+      <nav class="tabs" aria-label="Section">
+        <button class="tab is-active" data-view="icons">Icons</button>
+        <button class="tab" data-view="fonts">Fonts</button>
+        <button class="tab" data-view="refs">Refs</button>
+      </nav>
+      <div class="nav-label">Collections</div>
+      <div class="collections" id="collections"></div>
+    </aside>
+    <main class="main">
+      <header class="toolbar">
+        <label class="search">
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M11.3 10.2 14 12.9 12.9 14l-2.7-2.7a5.5 5.5 0 1 1 1.1-1.1ZM7 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/></svg>
+          <input id="search" type="search" placeholder="Search names, aliases, weapons, fonts" autofocus>
+        </label>
+        <button class="chip" id="search-all" type="button" title="Search every icon set">All sets</button>
+        <div class="toolbar-meta" id="result-meta"></div>
+      </header>
+      <div class="styles" id="styles" hidden></div>
+      <section class="workspace">
+        <div class="grid" id="grid"></div>
+        <aside class="detail" id="detail" hidden></aside>
+      </section>
+    </main>
+  </div>
+  <style id="dyn-fonts"></style>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+/*!
+ * Font Awesome Pro 7.3.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2026 Fonticons, Inc.
+ */
+:host,:root{--fa-family-pixel:"Font Awesome 7 Pixel";--fa-font-pixel-regular:normal 400 1em/1 var(--fa-family-pixel);--fa-style-family-pixel:var(--fa-family-pixel)}@font-face{font-family:"Font Awesome 7 Pixel";font-style:normal;font-weight:400;font-display:block;src:url(../webfonts/fa-pixel-regular-400.woff2)}.fapr{--fa-style:400}.fa-pixel,.fapr{--fa-family:var(--fa-family-pixel)}.fa-regular{--fa-style:400}

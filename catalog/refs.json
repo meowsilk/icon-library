@@ -1,0 +1,29 @@
+{
+  "purpose": "Study these before building UI. They are the anti-slop references for this library.",
+  "sites": [
+    {
+      "id": "grainient",
+      "name": "Grainient",
+      "url": "https://grainient.supply/collections",
+      "use": "Texture, grain, dither, and real backgrounds. Prefer these over generic glass, neon glow, or purple gradients."
+    },
+    {
+      "id": "animate-ui",
+      "name": "Animate UI",
+      "url": "https://animate-ui.com/",
+      "use": "Motion that has a job: hover, state change, enter/leave. Do not decorate every element."
+    },
+    {
+      "id": "transitions",
+      "name": "Transitions",
+      "url": "https://transitions.dev/",
+      "use": "Page and view transitions. Short, directed, no bounce-as-personality."
+    },
+    {
+      "id": "bklit-area-chart",
+      "name": "Bklit Area Chart",
+      "url": "https://bklit.com/docs/components/area-chart",
+      "use": "How a real chart is composed: data, axes, tooltip, loading. Copy this discipline, not a fake SaaS card."
+    }
+  ]
+}
