@@ -4,6 +4,8 @@ Usage: [README.md](README.md). UI references: [catalog/refs.json](catalog/refs.j
 
 ## Preview
 
+Browse: https://ff0l.github.io/ff0l-icon-library/
+
 ```bash
 python serve.py
 ```

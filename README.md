@@ -13,6 +13,10 @@ tools/       search and catalog build
 
 ## Preview
 
+Browse it here: https://ff0l.github.io/ff0l-icon-library/
+
+Locally:
+
 ```bash
 python serve.py
 ```
