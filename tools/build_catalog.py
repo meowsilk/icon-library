@@ -121,7 +121,7 @@ def parse_fa_style(css_path: Path, version: str) -> dict:
 
 
 def load_fa_release(version: str) -> dict:
-    rel = ICONS / "fontawesome" / f"v{version}"
+    rel = ICONS / "ui" / f"v{version}"
     css_dir = rel / "css"
     core = (css_dir / "fontawesome.css").read_text(encoding="utf-8", errors="replace")
     version5 = version.startswith("5.")
@@ -145,10 +145,10 @@ def load_fa_release(version: str) -> dict:
         icon["brand"] = icon["name"] in brand_names or any(a in brand_names for a in icon["aliases"])
     return {
         "id": f"fa-{version}",
-        "name": f"Font Awesome {version}",
+        "name": f"UI {version}",
         "kind": "fa",
         "version": version,
-        "cssBase": f"icons/fontawesome/v{version}/css/",
+        "cssBase": f"icons/ui/v{version}/css/",
         "coreCss": "fontawesome.css",
         "styles": styles,
         "icons": icons,
@@ -505,29 +505,29 @@ def main() -> None:
     collections = []
 
     fa73 = load_fa_release("7.3.0")
-    fa73["name"] = "Font Awesome Pro 7.3"
+    fa73["name"] = "UI 7.3"
     fa73["useWhen"] = "Default UI icons. Prefer solid for overlays and dense tools."
     collections.append(fa73)
 
     fa67 = load_fa_release("6.7.2")
-    fa67["name"] = "Font Awesome Pro 6.7"
-    fa67["useWhen"] = "Only when a project is pinned to FA 6."
+    fa67["name"] = "UI 6.7"
+    fa67["useWhen"] = "Only when a project is already on this older UI set."
     collections.append(fa67)
 
     fa5 = load_fa_release("5.15.4")
-    fa5["name"] = "Font Awesome Pro 5.15"
-    fa5["useWhen"] = "Only when a project is pinned to FA 5."
+    fa5["name"] = "UI 5.15"
+    fa5["useWhen"] = "Only when a project is already on this older UI set."
     collections.append(fa5)
 
-    remix_path = ICONS / "remix" / "remixicon.ttf"
+    remix_path = ICONS / "line" / "line.ttf"
     remix = inspect_font(remix_path)
     remix_col = {
         "id": "remix",
-        "name": "Remix Icon",
+        "name": "Line",
         "kind": "iconfont",
         "fontUrl": remix_path.relative_to(ROOT).as_posix(),
         "fontFamily": "RemixIcon Library",
-        "useWhen": "Line/fill UI icons when FA feels too heavy or a Remix name fits better.",
+        "useWhen": "Lighter line/fill UI icons.",
         "icons": [{"name": g["name"], "aliases": [], "unicode": g["unicode"]} for g in remix["glyphs"]],
     }
     collections.append(remix_col)
@@ -561,8 +561,8 @@ def main() -> None:
     for path, label, when in (
         (ICONS / "custom" / "iconsv2.ttf", "iconsV2", "Second custom icon font. Inspect glyphs before using."),
         (ICONS / "custom" / "tab.ttf", "tab_icon", "Tiny custom font, likely a single tab glyph."),
-        (ICONS / "fontawesome" / "loose" / "fa-solid-900.ttf", "FA Solid 900 (loose TTF)", "Loose FA solid file. Prefer icons/fontawesome/v7.3.0."),
-        (ICONS / "fontawesome" / "loose" / "fa-7-free-solid-900.otf", "FA 7 Free Solid", "Free solid subset. Prefer Pro 7.3 in this library."),
+        (ICONS / "ui" / "loose" / "fa-solid-900.ttf", "UI solid loose", "Loose solid file. Prefer icons/ui/v7.3.0."),
+        (ICONS / "ui" / "loose" / "fa-7-free-solid-900.otf", "UI solid subset", "Smaller solid subset. Prefer icons/ui/v7.3.0."),
     ):
         if not path.exists():
             continue
@@ -580,7 +580,7 @@ def main() -> None:
         )
 
     cs2 = []
-    for svg in sorted((ICONS / "cs2" / "equipment").glob("*.svg")):
+    for svg in sorted((ICONS / "equipment").glob("*.svg")):
         name = svg.stem
         tags = [p for p in name.split("_") if p]
         cs2.append(
@@ -593,9 +593,9 @@ def main() -> None:
     collections.append(
         {
             "id": "cs2",
-            "name": "CS2 Equipment",
+            "name": "Equipment",
             "kind": "svg",
-            "useWhen": "Counter-Strike weapon, grenade, armor, and utility art. Always prefer these over generic gun icons.",
+            "useWhen": "Weapons, grenades, armor, and kits. Prefer these over a generic gun icon.",
             "icons": cs2,
         }
     )
@@ -655,12 +655,12 @@ def main() -> None:
     fonts.extend(embedded)
 
     rules = [
-        "CS2 weapons, grenades, armor, kits → collection cs2 (SVG paths under icons/cs2/equipment/).",
-        "Custom overlay set (crosshair, eye, globe, weapon, sliders, gear) → dopamina / icons/custom/dopamina.ttf, codes A–F from icons/custom/defs.txt.",
-        "General UI icons → fa-7.3.0, style solid, class `fa-solid fa-<name>`. CSS in icons/fontawesome/v7.3.0/.",
-        "Brand logos → fa-7.3.0 style brands, class `fa-brands fa-<name>`.",
-        "Lighter line icons → remix (icons/remix/remixicon.ttf) when a Remix name is a better match.",
-        "Do not use FA 6/5 unless the consuming project is pinned to that version.",
+        "Weapons, grenades, armor, kits → collection cs2 (SVG paths under icons/equipment/).",
+        "Overlay set (crosshair, eye, globe, weapon, sliders, gear) → dopamina / icons/custom/dopamina.ttf, codes A–F from icons/custom/defs.txt.",
+        "General UI → fa-7.3.0 solid, class `fa-solid fa-<name>`. CSS in icons/ui/v7.3.0/.",
+        "Brand marks → fa-7.3.0 brands, class `fa-brands fa-<name>`.",
+        "Lighter line/fill icons → remix / icons/line/line.ttf.",
+        "Do not use UI 6.7 or 5.15 unless the project is already on that set.",
         "UI text → Montserrat or Inter. Titles → League Spartan, Oswald, or Syne. Dense small UI → Tahoma Bold or Verdana. Code → JetBrains Mono or Fira Code. Faces live in typefaces/.",
         "C++ embeds live in embeds/*.hpp; extracted copies are embeds/extracted/.",
     ]

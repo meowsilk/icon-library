@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""Download open-source font families from google/fonts (OFL, Apache, UFL).
-
-Uses a sparse git clone so we do not hit the GitHub Contents API rate limit.
-"""
+"""Download extra typeface families into typefaces/."""
 
 from __future__ import annotations
 

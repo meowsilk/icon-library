@@ -1,39 +1,29 @@
 # ff0l icon library
 
-Local Font Awesome Pro, Remix Icon, custom icon fonts, CS2 SVGs, and typefaces.
+Icons and typefaces I use for UI. Search before you invent a name or a path.
 
 ```
-icons/           icon fonts, FA releases, CS2 SVGs
-typefaces/       text faces (one folder per family)
-embeds/          C++ .hpp sources and extracted TTF/BDF
-catalog/         icons.json, fonts.json, refs.json
-preview/         static preview app
-tools/           search, catalog build, font download
+icons/       icon fonts and SVGs
+typefaces/   text faces, one folder per family
+embeds/      C++ .hpp bytes and extracted copies
+catalog/     icons.json, fonts.json, refs.json
+preview/     local preview
+tools/       search and catalog build
 ```
 
-Agents: read this file before picking or using an icon or font. Do not invent names, unicode, or paths.
+## Preview
 
 ```bash
 python serve.py
-python tools/search.py <what you need>
+```
+
+Opens `http://127.0.0.1:8765/preview/`. **All sets** searches every icon collection. Rebuild after adding files:
+
+```bash
 python tools/build_catalog.py
 ```
 
-Preview: `http://127.0.0.1:8765/preview/`  
-In the preview, **All sets** (or **All icons** in the sidebar) searches every collection at once.  
-Icons: `catalog/icons.json`  
-Fonts: `catalog/fonts.json`  
-UI references: `catalog/refs.json` and the **Refs** tab in the preview.
-
-The preview is a static site (`preview/` plus `catalog/*.json` and the asset files). It does not need Python except as a local file server (`python serve.py`). GitHub Pages can host the same files later from the repo root. A project site URL would be `https://<user>.github.io/<repo>/` (redirects to `preview/`).
-
-Do not publish yet. A private GitHub repo does **not** make a github.io site private: Free plans cannot enable Pages on private repos; Pro can, but the published site is public on the internet. Auth-gated Pages is GitHub Enterprise Cloud only. Font Awesome Pro webfonts in this tree must not go on a public Pages site.
-
----
-
-## Pick, then use
-
-1. Search. Do not guess.
+## Search
 
 ```bash
 python tools/search.py settings
@@ -43,68 +33,53 @@ python tools/search.py gear --json
 python tools/search.py --collection cs2 knife
 ```
 
-2. If ranking is unclear, read `catalog/icons.json` (and `catalog/fonts.json` for type).
-3. Return collection id, name, class and/or path, unicode when it is an icon font, and a one-line usage snippet.
+If ranking is unclear, read `catalog/icons.json` or `catalog/fonts.json`. Return the collection id, name, class and/or path, unicode when it is an icon font, and a one-line snippet.
 
-### Default order
+### What to pick
 
-1. CS2 weapons, grenades, armor, kits → `icons/cs2/equipment/<name>.svg`
-2. Custom overlay set (crosshair, eye, globe, weapon, sliders, gear) → `icons/custom/dopamina.ttf` (`A`–`F` in `icons/custom/defs.txt`; font cmap is `U+F000`…)
-3. General UI → Font Awesome 7.3 solid: `fa-solid fa-<name>`
-4. Brand logos → `fa-brands fa-<name>`
-5. Line/fill UI when a Remix name fits better → `icons/remix/remixicon.ttf` / `ri-<name>`
-6. Type: Montserrat or Inter for UI, League Spartan / Oswald / Syne for titles, JetBrains Mono or Fira Code for code. All faces in `typefaces/`
-7. Do not use FA 6 or FA 5 unless the consuming project is pinned to that version
-
----
+1. Weapons, grenades, armor, kits → `icons/equipment/<name>.svg`
+2. Overlay pack (crosshair, eye, globe, weapon, sliders, gear) → `icons/custom/dopamina.ttf`, keys `A`–`F` in `icons/custom/defs.txt`
+3. General UI → `fa-solid fa-<name>` with `icons/ui/v7.3.0/`
+4. Brand marks → `fa-brands fa-<name>`
+5. Lighter line/fill → `icons/line/line.ttf` / `ri-<name>`
+6. Type: Montserrat or Inter for UI. League Spartan, Oswald, or Syne for titles. Tahoma Bold or Verdana for dense small text. JetBrains Mono or Fira Code for code. Everything is under `typefaces/`
+7. Stay on UI 7.3 unless the project is already on 6.7 or 5.15
 
 ## Icons
 
-### Font Awesome Pro
-
-Releases live under `icons/fontawesome/v7.3.0/`, `icons/fontawesome/v6.7.2/`, `icons/fontawesome/v5.15.4/`.
-
-Prefer **7.3 solid** unless the project is already on another version.
+Solid UI (default):
 
 ```html
-<link rel="stylesheet" href="icons/fontawesome/v7.3.0/css/fontawesome.css">
-<link rel="stylesheet" href="icons/fontawesome/v7.3.0/css/solid.css">
+<link rel="stylesheet" href="icons/ui/v7.3.0/css/fontawesome.css">
+<link rel="stylesheet" href="icons/ui/v7.3.0/css/solid.css">
 <i class="fa-solid fa-gear"></i>
 ```
 
-Other 7.3 styles are extra CSS plus extra classes, for example:
+Other 7.3 styles are extra CSS plus extra classes:
 
 - regular → `regular.css` + `fa-regular fa-gear`
 - brands → `brands.css` + `fa-brands fa-github`
 - sharp solid → `sharp-solid.css` + `fa-sharp fa-solid fa-gear`
 - duotone → `duotone.css` + `fa-duotone fa-gear`
 
-Webfonts are next to the CSS: `icons/fontawesome/v7.3.0/webfonts/`.
+Webfonts sit next to the CSS in `icons/ui/v7.3.0/webfonts/`.
 
-### Remix Icon
-
-File: `icons/remix/remixicon.ttf`. Names are in the `remix` collection in `catalog/icons.json` (`home-line`, `search-2-fill`, …).
+Line icons:
 
 ```css
-@font-face { font-family: RemixIcon; src: url("icons/remix/remixicon.ttf"); }
+@font-face { font-family: RemixIcon; src: url("icons/line/line.ttf"); }
 .ri { font-family: RemixIcon; }
 ```
 
-Class form: `ri-<glyph-name>` (example `ri-home-line`). Confirm the name with search first.
+Class form: `ri-<glyph-name>` (example `ri-home-line`). Confirm the name with search.
 
-### CS2 equipment
-
-SVGs in `icons/cs2/equipment/`. Use these for Counter-Strike weapons and utility. Do not replace them with a generic gun icon.
+Equipment SVGs are white and read on dark surfaces:
 
 ```html
-<img src="icons/cs2/equipment/awp.svg" alt="AWP">
+<img src="icons/equipment/awp.svg" alt="AWP">
 ```
 
-They are white artwork. They read on dark surfaces.
-
-### CustomIconPack DOPAMINA
-
-File: `icons/custom/dopamina.ttf`. Intended keys from `icons/custom/defs.txt`:
+Overlay pack, `icons/custom/dopamina.ttf`:
 
 | Key | Name |
 | --- | --- |
@@ -115,29 +90,27 @@ File: `icons/custom/dopamina.ttf`. Intended keys from `icons/custom/defs.txt`:
 | `E` | sliders |
 | `F` | gear / settings |
 
-The font cmap stores those glyphs in the private-use area starting at `U+F000`. In overlay code, type `A`–`F` as `defs.txt` says. Search collection `dopamina` if you need the PUA code.
+Type `A`–`F` in overlay code. The cmap is private-use starting at `U+F000`. Search collection `dopamina` if you need the code.
 
-### Other icon fonts
+Also here:
 
-- `icons/custom/iconsv2.ttf` — second custom pack. Inspect the glyph in the preview before using it.
-- `icons/custom/tab.ttf` — tiny, a few glyphs.
-- `icons/fontawesome/loose/` — leftover FA files. Prefer `icons/fontawesome/v7.3.0`.
-- `embeds/*.hpp` — C++ embeds. Extracted copies: `embeds/extracted/`.
-
----
+- `icons/custom/iconsv2.ttf` — second pack. Check the glyph in the preview first.
+- `icons/custom/tab.ttf` — a few glyphs.
+- `icons/ui/loose/` — extra solid files. Prefer `icons/ui/v7.3.0`.
+- `embeds/*.hpp` — C++ bytes. Extracted copies: `embeds/extracted/`.
 
 ## Fonts
 
-Every text face lives in `typefaces/<slug>/` (OFL / Apache / UFL, each folder keeps its license). Refresh with `python tools/download_open_fonts.py`, then `python tools/build_catalog.py`.
+Each family is `typefaces/<slug>/`.
 
-| Use | File | Family |
-| --- | --- | --- |
-| UI body / labels | `typefaces/montserrat/` or `typefaces/inter/` | Montserrat / Inter |
-| Titles / display | `typefaces/leaguespartan/`, `typefaces/oswald/`, `typefaces/syne/` | League Spartan, Oswald, Syne |
-| Dense small UI | `typefaces/tahoma/Tahoma-Bold.ttf` | Tahoma Bold |
-| Readable small body | `typefaces/verdana/Verdana-Regular.ttf` | Verdana Regular |
-| Wide-coverage sans | `typefaces/notosans/` or `typefaces/klokantech-noto/` | Noto Sans |
-| Code / logs | `typefaces/jetbrainsmono/`, `typefaces/firacode/` | JetBrains Mono, Fira Code |
+| Use | Path |
+| --- | --- |
+| UI body | `typefaces/montserrat/` or `typefaces/inter/` |
+| Titles | `typefaces/leaguespartan/`, `typefaces/oswald/`, `typefaces/syne/` |
+| Dense small UI | `typefaces/tahoma/Tahoma-Bold.ttf` |
+| Small body | `typefaces/verdana/Verdana-Regular.ttf` |
+| Wide coverage | `typefaces/notosans/` |
+| Code / logs | `typefaces/jetbrainsmono/`, `typefaces/firacode/` |
 
 ```css
 @font-face {
@@ -147,21 +120,17 @@ Every text face lives in `typefaces/<slug>/` (OFL / Apache / UFL, each folder ke
 }
 ```
 
-Do not mix unrelated display faces in one UI. One family for UI, one for titles if needed.
-
-Embedded bitmap fonts (`mochi`, `pretzel`) are BDF, not `@font-face` TTFs. Render from the catalog bitmaps or the C++ bytes in `embeds/*.hpp`.
-
----
+One family for UI, one for titles if you need a second. `mochi` and `pretzel` are bitmap fonts in `embeds/` — use the catalog bitmaps or the C++ bytes, not `@font-face`.
 
 ## UI references
 
-`catalog/Websites.txt` and `catalog/refs.json` are the same list. Open them before designing or implementing UI. The preview **Refs** tab lists them too.
+`catalog/refs.json` and the preview **Refs** tab. Open them before you design.
 
 | Site | Why |
 | --- | --- |
-| https://grainient.supply/collections | Real grain, dither, and textured backgrounds. Not generic glass. |
-| https://animate-ui.com/ | Motion with a purpose. |
-| https://transitions.dev/ | Page and view transitions that stay short and directed. |
+| https://grainient.supply/collections | Texture, grain, dither. Not generic glass. |
+| https://animate-ui.com/ | Motion with a job. |
+| https://transitions.dev/ | Short, directed transitions. |
 | https://bklit.com/docs/components/area-chart | How a real data component is built. |
 
-Do not ship AI slop: purple-blue gradients, glowing borders, oversized glass cards, emoji-as-icons, bounce on everything, fake SaaS dashboards. Use this library’s icons and fonts. Keep layout compact, type hierarchical, color semantic, motion rare.
+No purple-blue gradients, glow borders, oversized glass cards, emoji-as-icons, or bounce on everything. Compact layout, hierarchical type, semantic color, rare motion.

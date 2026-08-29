@@ -3,22 +3,22 @@
   "search": "python tools/search.py <query>",
   "preview": "python serve.py",
   "rules": [
-    "CS2 weapons, grenades, armor, kits → collection cs2 (SVG paths under icons/cs2/equipment/).",
-    "Custom overlay set (crosshair, eye, globe, weapon, sliders, gear) → dopamina / icons/custom/dopamina.ttf, codes A–F from icons/custom/defs.txt.",
-    "General UI icons → fa-7.3.0, style solid, class `fa-solid fa-<name>`. CSS in icons/fontawesome/v7.3.0/.",
-    "Brand logos → fa-7.3.0 style brands, class `fa-brands fa-<name>`.",
-    "Lighter line icons → remix (icons/remix/remixicon.ttf) when a Remix name is a better match.",
-    "Do not use FA 6/5 unless the consuming project is pinned to that version.",
+    "Weapons, grenades, armor, kits → collection cs2 (SVG paths under icons/equipment/).",
+    "Overlay set (crosshair, eye, globe, weapon, sliders, gear) → dopamina / icons/custom/dopamina.ttf, codes A–F from icons/custom/defs.txt.",
+    "General UI → fa-7.3.0 solid, class `fa-solid fa-<name>`. CSS in icons/ui/v7.3.0/.",
+    "Brand marks → fa-7.3.0 brands, class `fa-brands fa-<name>`.",
+    "Lighter line/fill icons → remix / icons/line/line.ttf.",
+    "Do not use UI 6.7 or 5.15 unless the project is already on that set.",
     "UI text → Montserrat or Inter. Titles → League Spartan, Oswald, or Syne. Dense small UI → Tahoma Bold or Verdana. Code → JetBrains Mono or Fira Code. Faces live in typefaces/.",
     "C++ embeds live in embeds/*.hpp; extracted copies are embeds/extracted/."
   ],
   "collections": [
     {
       "id": "fa-7.3.0",
-      "name": "Font Awesome Pro 7.3",
+      "name": "UI 7.3",
       "kind": "fa",
       "version": "7.3.0",
-      "cssBase": "icons/fontawesome/v7.3.0/css/",
+      "cssBase": "icons/ui/v7.3.0/css/",
       "coreCss": "fontawesome.css",
       "styles": [
         {
@@ -23044,10 +23044,10 @@
     },
     {
       "id": "fa-6.7.2",
-      "name": "Font Awesome Pro 6.7",
+      "name": "UI 6.7",
       "kind": "fa",
       "version": "6.7.2",
-      "cssBase": "icons/fontawesome/v6.7.2/css/",
+      "cssBase": "icons/ui/v6.7.2/css/",
       "coreCss": "fontawesome.css",
       "styles": [
         {
@@ -43139,14 +43139,14 @@
           "brand": false
         }
       ],
-      "useWhen": "Only when a project is pinned to FA 6."
+      "useWhen": "Only when a project is already on this older UI set."
     },
     {
       "id": "fa-5.15.4",
-      "name": "Font Awesome Pro 5.15",
+      "name": "UI 5.15",
       "kind": "fa",
       "version": "5.15.4",
-      "cssBase": "icons/fontawesome/v5.15.4/css/",
+      "cssBase": "icons/ui/v5.15.4/css/",
       "coreCss": "fontawesome.css",
       "styles": [
         {
@@ -57056,15 +57056,15 @@
           "brand": false
         }
       ],
-      "useWhen": "Only when a project is pinned to FA 5."
+      "useWhen": "Only when a project is already on this older UI set."
     },
     {
       "id": "remix",
-      "name": "Remix Icon",
+      "name": "Line",
       "kind": "iconfont",
-      "fontUrl": "icons/remix/remixicon.ttf",
+      "fontUrl": "icons/line/line.ttf",
       "fontFamily": "RemixIcon Library",
-      "useWhen": "Line/fill UI icons when FA feels too heavy or a Remix name fits better.",
+      "useWhen": "Lighter line/fill UI icons.",
       "icons": [
         {
           "name": "24-hours-fill",
@@ -82329,12 +82329,12 @@
       ]
     },
     {
-      "id": "fa-solid-900-loose-ttf",
-      "name": "FA Solid 900 (loose TTF)",
+      "id": "ui-solid-loose",
+      "name": "UI solid loose",
       "kind": "iconfont",
-      "fontUrl": "icons/fontawesome/loose/fa-solid-900.ttf",
+      "fontUrl": "icons/ui/loose/fa-solid-900.ttf",
       "fontFamily": "Lib Font Awesome 6 Free Solid",
-      "useWhen": "Loose FA solid file. Prefer icons/fontawesome/v7.3.0.",
+      "useWhen": "Loose solid file. Prefer icons/ui/v7.3.0.",
       "icons": [
         {
           "name": "exclamation",
@@ -92219,12 +92219,12 @@
       ]
     },
     {
-      "id": "fa-7-free-solid",
-      "name": "FA 7 Free Solid",
+      "id": "ui-solid-subset",
+      "name": "UI solid subset",
       "kind": "iconfont",
-      "fontUrl": "icons/fontawesome/loose/fa-7-free-solid-900.otf",
+      "fontUrl": "icons/ui/loose/fa-7-free-solid-900.otf",
       "fontFamily": "Lib Font Awesome 7 Free Solid",
-      "useWhen": "Free solid subset. Prefer Pro 7.3 in this library.",
+      "useWhen": "Smaller solid subset. Prefer icons/ui/v7.3.0.",
       "icons": [
         {
           "name": "u0020",
@@ -108405,23 +108405,23 @@
     },
     {
       "id": "cs2",
-      "name": "CS2 Equipment",
+      "name": "Equipment",
       "kind": "svg",
-      "useWhen": "Counter-Strike weapon, grenade, armor, and utility art. Always prefer these over generic gun icons.",
+      "useWhen": "Weapons, grenades, armor, and kits. Prefer these over a generic gun icon.",
       "icons": [
         {
           "name": "ak47",
           "aliases": [
             "ak47"
           ],
-          "path": "icons/cs2/equipment/ak47.svg"
+          "path": "icons/equipment/ak47.svg"
         },
         {
           "name": "ammobox",
           "aliases": [
             "ammobox"
           ],
-          "path": "icons/cs2/equipment/ammobox.svg"
+          "path": "icons/equipment/ammobox.svg"
         },
         {
           "name": "ammobox_threepack",
@@ -108429,14 +108429,14 @@
             "ammobox",
             "threepack"
           ],
-          "path": "icons/cs2/equipment/ammobox_threepack.svg"
+          "path": "icons/equipment/ammobox_threepack.svg"
         },
         {
           "name": "armor",
           "aliases": [
             "armor"
           ],
-          "path": "icons/cs2/equipment/armor.svg"
+          "path": "icons/equipment/armor.svg"
         },
         {
           "name": "armor_helmet",
@@ -108444,14 +108444,14 @@
             "armor",
             "helmet"
           ],
-          "path": "icons/cs2/equipment/armor_helmet.svg"
+          "path": "icons/equipment/armor_helmet.svg"
         },
         {
           "name": "assaultsuit",
           "aliases": [
             "assaultsuit"
           ],
-          "path": "icons/cs2/equipment/assaultsuit.svg"
+          "path": "icons/equipment/assaultsuit.svg"
         },
         {
           "name": "assaultsuit_helmet_only",
@@ -108460,42 +108460,42 @@
             "helmet",
             "only"
           ],
-          "path": "icons/cs2/equipment/assaultsuit_helmet_only.svg"
+          "path": "icons/equipment/assaultsuit_helmet_only.svg"
         },
         {
           "name": "aug",
           "aliases": [
             "aug"
           ],
-          "path": "icons/cs2/equipment/aug.svg"
+          "path": "icons/equipment/aug.svg"
         },
         {
           "name": "awp",
           "aliases": [
             "awp"
           ],
-          "path": "icons/cs2/equipment/awp.svg"
+          "path": "icons/equipment/awp.svg"
         },
         {
           "name": "bayonet",
           "aliases": [
             "bayonet"
           ],
-          "path": "icons/cs2/equipment/bayonet.svg"
+          "path": "icons/equipment/bayonet.svg"
         },
         {
           "name": "bizon",
           "aliases": [
             "bizon"
           ],
-          "path": "icons/cs2/equipment/bizon.svg"
+          "path": "icons/equipment/bizon.svg"
         },
         {
           "name": "c4",
           "aliases": [
             "c4"
           ],
-          "path": "icons/cs2/equipment/c4.svg"
+          "path": "icons/equipment/c4.svg"
         },
         {
           "name": "clothing_hands",
@@ -108503,98 +108503,98 @@
             "clothing",
             "hands"
           ],
-          "path": "icons/cs2/equipment/clothing_hands.svg"
+          "path": "icons/equipment/clothing_hands.svg"
         },
         {
           "name": "customplayer",
           "aliases": [
             "customplayer"
           ],
-          "path": "icons/cs2/equipment/customplayer.svg"
+          "path": "icons/equipment/customplayer.svg"
         },
         {
           "name": "cz75a",
           "aliases": [
             "cz75a"
           ],
-          "path": "icons/cs2/equipment/cz75a.svg"
+          "path": "icons/equipment/cz75a.svg"
         },
         {
           "name": "deagle",
           "aliases": [
             "deagle"
           ],
-          "path": "icons/cs2/equipment/deagle.svg"
+          "path": "icons/equipment/deagle.svg"
         },
         {
           "name": "decoy",
           "aliases": [
             "decoy"
           ],
-          "path": "icons/cs2/equipment/decoy.svg"
+          "path": "icons/equipment/decoy.svg"
         },
         {
           "name": "defuser",
           "aliases": [
             "defuser"
           ],
-          "path": "icons/cs2/equipment/defuser.svg"
+          "path": "icons/equipment/defuser.svg"
         },
         {
           "name": "disconnect",
           "aliases": [
             "disconnect"
           ],
-          "path": "icons/cs2/equipment/disconnect.svg"
+          "path": "icons/equipment/disconnect.svg"
         },
         {
           "name": "dronegun",
           "aliases": [
             "dronegun"
           ],
-          "path": "icons/cs2/equipment/dronegun.svg"
+          "path": "icons/equipment/dronegun.svg"
         },
         {
           "name": "elite",
           "aliases": [
             "elite"
           ],
-          "path": "icons/cs2/equipment/elite.svg"
+          "path": "icons/equipment/elite.svg"
         },
         {
           "name": "famas",
           "aliases": [
             "famas"
           ],
-          "path": "icons/cs2/equipment/famas.svg"
+          "path": "icons/equipment/famas.svg"
         },
         {
           "name": "firebomb",
           "aliases": [
             "firebomb"
           ],
-          "path": "icons/cs2/equipment/firebomb.svg"
+          "path": "icons/equipment/firebomb.svg"
         },
         {
           "name": "fiveseven",
           "aliases": [
             "fiveseven"
           ],
-          "path": "icons/cs2/equipment/fiveseven.svg"
+          "path": "icons/equipment/fiveseven.svg"
         },
         {
           "name": "flair0",
           "aliases": [
             "flair0"
           ],
-          "path": "icons/cs2/equipment/flair0.svg"
+          "path": "icons/equipment/flair0.svg"
         },
         {
           "name": "flashbang",
           "aliases": [
             "flashbang"
           ],
-          "path": "icons/cs2/equipment/flashbang.svg"
+          "path": "icons/equipment/flashbang.svg"
         },
         {
           "name": "flashbang_assist",
@@ -108602,49 +108602,49 @@
             "flashbang",
             "assist"
           ],
-          "path": "icons/cs2/equipment/flashbang_assist.svg"
+          "path": "icons/equipment/flashbang_assist.svg"
         },
         {
           "name": "g3sg1",
           "aliases": [
             "g3sg1"
           ],
-          "path": "icons/cs2/equipment/g3sg1.svg"
+          "path": "icons/equipment/g3sg1.svg"
         },
         {
           "name": "galilar",
           "aliases": [
             "galilar"
           ],
-          "path": "icons/cs2/equipment/galilar.svg"
+          "path": "icons/equipment/galilar.svg"
         },
         {
           "name": "glock",
           "aliases": [
             "glock"
           ],
-          "path": "icons/cs2/equipment/glock.svg"
+          "path": "icons/equipment/glock.svg"
         },
         {
           "name": "grenadepack",
           "aliases": [
             "grenadepack"
           ],
-          "path": "icons/cs2/equipment/grenadepack.svg"
+          "path": "icons/equipment/grenadepack.svg"
         },
         {
           "name": "grenadepack2",
           "aliases": [
             "grenadepack2"
           ],
-          "path": "icons/cs2/equipment/grenadepack2.svg"
+          "path": "icons/equipment/grenadepack2.svg"
         },
         {
           "name": "healthshot",
           "aliases": [
             "healthshot"
           ],
-          "path": "icons/cs2/equipment/healthshot.svg"
+          "path": "icons/equipment/healthshot.svg"
         },
         {
           "name": "heavy_armor",
@@ -108652,56 +108652,56 @@
             "heavy",
             "armor"
           ],
-          "path": "icons/cs2/equipment/heavy_armor.svg"
+          "path": "icons/equipment/heavy_armor.svg"
         },
         {
           "name": "hegrenade",
           "aliases": [
             "hegrenade"
           ],
-          "path": "icons/cs2/equipment/hegrenade.svg"
+          "path": "icons/equipment/hegrenade.svg"
         },
         {
           "name": "helmet",
           "aliases": [
             "helmet"
           ],
-          "path": "icons/cs2/equipment/helmet.svg"
+          "path": "icons/equipment/helmet.svg"
         },
         {
           "name": "hkp2000",
           "aliases": [
             "hkp2000"
           ],
-          "path": "icons/cs2/equipment/hkp2000.svg"
+          "path": "icons/equipment/hkp2000.svg"
         },
         {
           "name": "incgrenade",
           "aliases": [
             "incgrenade"
           ],
-          "path": "icons/cs2/equipment/incgrenade.svg"
+          "path": "icons/equipment/incgrenade.svg"
         },
         {
           "name": "inferno",
           "aliases": [
             "inferno"
           ],
-          "path": "icons/cs2/equipment/inferno.svg"
+          "path": "icons/equipment/inferno.svg"
         },
         {
           "name": "kevlar",
           "aliases": [
             "kevlar"
           ],
-          "path": "icons/cs2/equipment/kevlar.svg"
+          "path": "icons/equipment/kevlar.svg"
         },
         {
           "name": "knife",
           "aliases": [
             "knife"
           ],
-          "path": "icons/cs2/equipment/knife.svg"
+          "path": "icons/equipment/knife.svg"
         },
         {
           "name": "knife_bowie",
@@ -108709,7 +108709,7 @@
             "knife",
             "bowie"
           ],
-          "path": "icons/cs2/equipment/knife_bowie.svg"
+          "path": "icons/equipment/knife_bowie.svg"
         },
         {
           "name": "knife_butterfly",
@@ -108717,7 +108717,7 @@
             "knife",
             "butterfly"
           ],
-          "path": "icons/cs2/equipment/knife_butterfly.svg"
+          "path": "icons/equipment/knife_butterfly.svg"
         },
         {
           "name": "knife_canis",
@@ -108725,7 +108725,7 @@
             "knife",
             "canis"
           ],
-          "path": "icons/cs2/equipment/knife_canis.svg"
+          "path": "icons/equipment/knife_canis.svg"
         },
         {
           "name": "knife_cord",
@@ -108733,7 +108733,7 @@
             "knife",
             "cord"
           ],
-          "path": "icons/cs2/equipment/knife_cord.svg"
+          "path": "icons/equipment/knife_cord.svg"
         },
         {
           "name": "knife_css",
@@ -108741,7 +108741,7 @@
             "knife",
             "css"
           ],
-          "path": "icons/cs2/equipment/knife_css.svg"
+          "path": "icons/equipment/knife_css.svg"
         },
         {
           "name": "knife_falchion",
@@ -108749,7 +108749,7 @@
             "knife",
             "falchion"
           ],
-          "path": "icons/cs2/equipment/knife_falchion.svg"
+          "path": "icons/equipment/knife_falchion.svg"
         },
         {
           "name": "knife_flip",
@@ -108757,7 +108757,7 @@
             "knife",
             "flip"
           ],
-          "path": "icons/cs2/equipment/knife_flip.svg"
+          "path": "icons/equipment/knife_flip.svg"
         },
         {
           "name": "knife_gut",
@@ -108765,7 +108765,7 @@
             "knife",
             "gut"
           ],
-          "path": "icons/cs2/equipment/knife_gut.svg"
+          "path": "icons/equipment/knife_gut.svg"
         },
         {
           "name": "knife_gypsy_jackknife",
@@ -108774,7 +108774,7 @@
             "gypsy",
             "jackknife"
           ],
-          "path": "icons/cs2/equipment/knife_gypsy_jackknife.svg"
+          "path": "icons/equipment/knife_gypsy_jackknife.svg"
         },
         {
           "name": "knife_karambit",
@@ -108782,7 +108782,7 @@
             "knife",
             "karambit"
           ],
-          "path": "icons/cs2/equipment/knife_karambit.svg"
+          "path": "icons/equipment/knife_karambit.svg"
         },
         {
           "name": "knife_kukri",
@@ -108790,7 +108790,7 @@
             "knife",
             "kukri"
           ],
-          "path": "icons/cs2/equipment/knife_kukri.svg"
+          "path": "icons/equipment/knife_kukri.svg"
         },
         {
           "name": "knife_m9_bayonet",
@@ -108799,7 +108799,7 @@
             "m9",
             "bayonet"
           ],
-          "path": "icons/cs2/equipment/knife_m9_bayonet.svg"
+          "path": "icons/equipment/knife_m9_bayonet.svg"
         },
         {
           "name": "knife_outdoor",
@@ -108807,7 +108807,7 @@
             "knife",
             "outdoor"
           ],
-          "path": "icons/cs2/equipment/knife_outdoor.svg"
+          "path": "icons/equipment/knife_outdoor.svg"
         },
         {
           "name": "knife_push",
@@ -108815,7 +108815,7 @@
             "knife",
             "push"
           ],
-          "path": "icons/cs2/equipment/knife_push.svg"
+          "path": "icons/equipment/knife_push.svg"
         },
         {
           "name": "knife_skeleton",
@@ -108823,7 +108823,7 @@
             "knife",
             "skeleton"
           ],
-          "path": "icons/cs2/equipment/knife_skeleton.svg"
+          "path": "icons/equipment/knife_skeleton.svg"
         },
         {
           "name": "knife_stiletto",
@@ -108831,7 +108831,7 @@
             "knife",
             "stiletto"
           ],
-          "path": "icons/cs2/equipment/knife_stiletto.svg"
+          "path": "icons/equipment/knife_stiletto.svg"
         },
         {
           "name": "knife_survival_bowie",
@@ -108840,7 +108840,7 @@
             "survival",
             "bowie"
           ],
-          "path": "icons/cs2/equipment/knife_survival_bowie.svg"
+          "path": "icons/equipment/knife_survival_bowie.svg"
         },
         {
           "name": "knife_t",
@@ -108848,7 +108848,7 @@
             "knife",
             "t"
           ],
-          "path": "icons/cs2/equipment/knife_t.svg"
+          "path": "icons/equipment/knife_t.svg"
         },
         {
           "name": "knife_tactical",
@@ -108856,7 +108856,7 @@
             "knife",
             "tactical"
           ],
-          "path": "icons/cs2/equipment/knife_tactical.svg"
+          "path": "icons/equipment/knife_tactical.svg"
         },
         {
           "name": "knife_twinblade",
@@ -108864,7 +108864,7 @@
             "knife",
             "twinblade"
           ],
-          "path": "icons/cs2/equipment/knife_twinblade.svg"
+          "path": "icons/equipment/knife_twinblade.svg"
         },
         {
           "name": "knife_ursus",
@@ -108872,7 +108872,7 @@
             "knife",
             "ursus"
           ],
-          "path": "icons/cs2/equipment/knife_ursus.svg"
+          "path": "icons/equipment/knife_ursus.svg"
         },
         {
           "name": "knife_widowmaker",
@@ -108880,28 +108880,28 @@
             "knife",
             "widowmaker"
           ],
-          "path": "icons/cs2/equipment/knife_widowmaker.svg"
+          "path": "icons/equipment/knife_widowmaker.svg"
         },
         {
           "name": "knifegg",
           "aliases": [
             "knifegg"
           ],
-          "path": "icons/cs2/equipment/knifegg.svg"
+          "path": "icons/equipment/knifegg.svg"
         },
         {
           "name": "m249",
           "aliases": [
             "m249"
           ],
-          "path": "icons/cs2/equipment/m249.svg"
+          "path": "icons/equipment/m249.svg"
         },
         {
           "name": "m4a1",
           "aliases": [
             "m4a1"
           ],
-          "path": "icons/cs2/equipment/m4a1.svg"
+          "path": "icons/equipment/m4a1.svg"
         },
         {
           "name": "m4a1_silencer",
@@ -108909,7 +108909,7 @@
             "m4a1",
             "silencer"
           ],
-          "path": "icons/cs2/equipment/m4a1_silencer.svg"
+          "path": "icons/equipment/m4a1_silencer.svg"
         },
         {
           "name": "m4a1_silencer_off",
@@ -108918,98 +108918,98 @@
             "silencer",
             "off"
           ],
-          "path": "icons/cs2/equipment/m4a1_silencer_off.svg"
+          "path": "icons/equipment/m4a1_silencer_off.svg"
         },
         {
           "name": "mac10",
           "aliases": [
             "mac10"
           ],
-          "path": "icons/cs2/equipment/mac10.svg"
+          "path": "icons/equipment/mac10.svg"
         },
         {
           "name": "mag7",
           "aliases": [
             "mag7"
           ],
-          "path": "icons/cs2/equipment/mag7.svg"
+          "path": "icons/equipment/mag7.svg"
         },
         {
           "name": "melee",
           "aliases": [
             "melee"
           ],
-          "path": "icons/cs2/equipment/melee.svg"
+          "path": "icons/equipment/melee.svg"
         },
         {
           "name": "molotov",
           "aliases": [
             "molotov"
           ],
-          "path": "icons/cs2/equipment/molotov.svg"
+          "path": "icons/equipment/molotov.svg"
         },
         {
           "name": "movelinear",
           "aliases": [
             "movelinear"
           ],
-          "path": "icons/cs2/equipment/movelinear.svg"
+          "path": "icons/equipment/movelinear.svg"
         },
         {
           "name": "mp5sd",
           "aliases": [
             "mp5sd"
           ],
-          "path": "icons/cs2/equipment/mp5sd.svg"
+          "path": "icons/equipment/mp5sd.svg"
         },
         {
           "name": "mp7",
           "aliases": [
             "mp7"
           ],
-          "path": "icons/cs2/equipment/mp7.svg"
+          "path": "icons/equipment/mp7.svg"
         },
         {
           "name": "mp9",
           "aliases": [
             "mp9"
           ],
-          "path": "icons/cs2/equipment/mp9.svg"
+          "path": "icons/equipment/mp9.svg"
         },
         {
           "name": "negev",
           "aliases": [
             "negev"
           ],
-          "path": "icons/cs2/equipment/negev.svg"
+          "path": "icons/equipment/negev.svg"
         },
         {
           "name": "nova",
           "aliases": [
             "nova"
           ],
-          "path": "icons/cs2/equipment/nova.svg"
+          "path": "icons/equipment/nova.svg"
         },
         {
           "name": "p2000",
           "aliases": [
             "p2000"
           ],
-          "path": "icons/cs2/equipment/p2000.svg"
+          "path": "icons/equipment/p2000.svg"
         },
         {
           "name": "p250",
           "aliases": [
             "p250"
           ],
-          "path": "icons/cs2/equipment/p250.svg"
+          "path": "icons/equipment/p250.svg"
         },
         {
           "name": "p90",
           "aliases": [
             "p90"
           ],
-          "path": "icons/cs2/equipment/p90.svg"
+          "path": "icons/equipment/p90.svg"
         },
         {
           "name": "planted_c4",
@@ -109017,7 +109017,7 @@
             "planted",
             "c4"
           ],
-          "path": "icons/cs2/equipment/planted_c4.svg"
+          "path": "icons/equipment/planted_c4.svg"
         },
         {
           "name": "prop_exploding_barrel",
@@ -109026,56 +109026,56 @@
             "exploding",
             "barrel"
           ],
-          "path": "icons/cs2/equipment/prop_exploding_barrel.svg"
+          "path": "icons/equipment/prop_exploding_barrel.svg"
         },
         {
           "name": "revolver",
           "aliases": [
             "revolver"
           ],
-          "path": "icons/cs2/equipment/revolver.svg"
+          "path": "icons/equipment/revolver.svg"
         },
         {
           "name": "sawedoff",
           "aliases": [
             "sawedoff"
           ],
-          "path": "icons/cs2/equipment/sawedoff.svg"
+          "path": "icons/equipment/sawedoff.svg"
         },
         {
           "name": "scar20",
           "aliases": [
             "scar20"
           ],
-          "path": "icons/cs2/equipment/scar20.svg"
+          "path": "icons/equipment/scar20.svg"
         },
         {
           "name": "sg556",
           "aliases": [
             "sg556"
           ],
-          "path": "icons/cs2/equipment/sg556.svg"
+          "path": "icons/equipment/sg556.svg"
         },
         {
           "name": "smokegrenade",
           "aliases": [
             "smokegrenade"
           ],
-          "path": "icons/cs2/equipment/smokegrenade.svg"
+          "path": "icons/equipment/smokegrenade.svg"
         },
         {
           "name": "spray0",
           "aliases": [
             "spray0"
           ],
-          "path": "icons/cs2/equipment/spray0.svg"
+          "path": "icons/equipment/spray0.svg"
         },
         {
           "name": "ssg08",
           "aliases": [
             "ssg08"
           ],
-          "path": "icons/cs2/equipment/ssg08.svg"
+          "path": "icons/equipment/ssg08.svg"
         },
         {
           "name": "stomp_damage",
@@ -109083,21 +109083,21 @@
             "stomp",
             "damage"
           ],
-          "path": "icons/cs2/equipment/stomp_damage.svg"
+          "path": "icons/equipment/stomp_damage.svg"
         },
         {
           "name": "taser",
           "aliases": [
             "taser"
           ],
-          "path": "icons/cs2/equipment/taser.svg"
+          "path": "icons/equipment/taser.svg"
         },
         {
           "name": "tec9",
           "aliases": [
             "tec9"
           ],
-          "path": "icons/cs2/equipment/tec9.svg"
+          "path": "icons/equipment/tec9.svg"
         },
         {
           "name": "trigger_hurt",
@@ -109105,14 +109105,14 @@
             "trigger",
             "hurt"
           ],
-          "path": "icons/cs2/equipment/trigger_hurt.svg"
+          "path": "icons/equipment/trigger_hurt.svg"
         },
         {
           "name": "ump45",
           "aliases": [
             "ump45"
           ],
-          "path": "icons/cs2/equipment/ump45.svg"
+          "path": "icons/equipment/ump45.svg"
         },
         {
           "name": "usp_silencer",
@@ -109120,7 +109120,7 @@
             "usp",
             "silencer"
           ],
-          "path": "icons/cs2/equipment/usp_silencer.svg"
+          "path": "icons/equipment/usp_silencer.svg"
         },
         {
           "name": "usp_silencer_off",
@@ -109129,28 +109129,28 @@
             "silencer",
             "off"
           ],
-          "path": "icons/cs2/equipment/usp_silencer_off.svg"
+          "path": "icons/equipment/usp_silencer_off.svg"
         },
         {
           "name": "world",
           "aliases": [
             "world"
           ],
-          "path": "icons/cs2/equipment/world.svg"
+          "path": "icons/equipment/world.svg"
         },
         {
           "name": "worldent",
           "aliases": [
             "worldent"
           ],
-          "path": "icons/cs2/equipment/worldent.svg"
+          "path": "icons/equipment/worldent.svg"
         },
         {
           "name": "xm1014",
           "aliases": [
             "xm1014"
           ],
-          "path": "icons/cs2/equipment/xm1014.svg"
+          "path": "icons/equipment/xm1014.svg"
         }
       ]
     },

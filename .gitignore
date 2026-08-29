@@ -1,4 +1,5 @@
 .cache/
+.cursor/
 .serena/
 __pycache__/
 *.pyc
