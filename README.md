@@ -2,6 +2,15 @@
 
 Local Font Awesome Pro, Remix Icon, custom icon fonts, CS2 SVGs, and typefaces.
 
+```
+icons/           icon fonts, FA releases, CS2 SVGs
+typefaces/       text faces (one folder per family)
+embeds/          C++ .hpp sources and extracted TTF/BDF
+catalog/         icons.json, fonts.json, refs.json
+preview/         static preview app
+tools/           search, catalog build, font download
+```
+
 Agents: read this file before picking or using an icon or font. Do not invent names, unicode, or paths.
 
 ```bash
@@ -39,12 +48,12 @@ python tools/search.py --collection cs2 knife
 
 ### Default order
 
-1. CS2 weapons, grenades, armor, kits → `cs2/equipment/<name>.svg`
-2. Custom overlay set (crosshair, eye, globe, weapon, sliders, gear) → `CustomIconPackDOPAMINA.ttf` (`A`–`F` in `defs.txt`; font cmap is `U+F000`…)
+1. CS2 weapons, grenades, armor, kits → `icons/cs2/equipment/<name>.svg`
+2. Custom overlay set (crosshair, eye, globe, weapon, sliders, gear) → `icons/custom/dopamina.ttf` (`A`–`F` in `icons/custom/defs.txt`; font cmap is `U+F000`…)
 3. General UI → Font Awesome 7.3 solid: `fa-solid fa-<name>`
 4. Brand logos → `fa-brands fa-<name>`
-5. Line/fill UI when a Remix name fits better → `remixicon.ttf` / `ri-<name>`
-6. Type: Montserrat or Inter for UI, League Spartan / Oswald / Syne for titles, JetBrains Mono or Fira Code for code. More in `typefaces/`
+5. Line/fill UI when a Remix name fits better → `icons/remix/remixicon.ttf` / `ri-<name>`
+6. Type: Montserrat or Inter for UI, League Spartan / Oswald / Syne for titles, JetBrains Mono or Fira Code for code. All faces in `typefaces/`
 7. Do not use FA 6 or FA 5 unless the consuming project is pinned to that version
 
 ---
@@ -53,13 +62,13 @@ python tools/search.py --collection cs2 knife
 
 ### Font Awesome Pro
 
-Releases live under `releases/v7.3.0/`, `releases/v6.7.2/`, `releases/v5.15.4/`.
+Releases live under `icons/fontawesome/v7.3.0/`, `icons/fontawesome/v6.7.2/`, `icons/fontawesome/v5.15.4/`.
 
 Prefer **7.3 solid** unless the project is already on another version.
 
 ```html
-<link rel="stylesheet" href="releases/v7.3.0/css/fontawesome.css">
-<link rel="stylesheet" href="releases/v7.3.0/css/solid.css">
+<link rel="stylesheet" href="icons/fontawesome/v7.3.0/css/fontawesome.css">
+<link rel="stylesheet" href="icons/fontawesome/v7.3.0/css/solid.css">
 <i class="fa-solid fa-gear"></i>
 ```
 
@@ -70,14 +79,14 @@ Other 7.3 styles are extra CSS plus extra classes, for example:
 - sharp solid → `sharp-solid.css` + `fa-sharp fa-solid fa-gear`
 - duotone → `duotone.css` + `fa-duotone fa-gear`
 
-Webfonts are next to the CSS: `releases/v7.3.0/webfonts/`.
+Webfonts are next to the CSS: `icons/fontawesome/v7.3.0/webfonts/`.
 
 ### Remix Icon
 
-File: `remixicon.ttf`. Names are in the `remix` collection in `catalog/icons.json` (`home-line`, `search-2-fill`, …).
+File: `icons/remix/remixicon.ttf`. Names are in the `remix` collection in `catalog/icons.json` (`home-line`, `search-2-fill`, …).
 
 ```css
-@font-face { font-family: RemixIcon; src: url("remixicon.ttf"); }
+@font-face { font-family: RemixIcon; src: url("icons/remix/remixicon.ttf"); }
 .ri { font-family: RemixIcon; }
 ```
 
@@ -85,17 +94,17 @@ Class form: `ri-<glyph-name>` (example `ri-home-line`). Confirm the name with se
 
 ### CS2 equipment
 
-SVGs in `cs2/equipment/`. Use these for Counter-Strike weapons and utility. Do not replace them with a generic gun icon.
+SVGs in `icons/cs2/equipment/`. Use these for Counter-Strike weapons and utility. Do not replace them with a generic gun icon.
 
 ```html
-<img src="cs2/equipment/awp.svg" alt="AWP">
+<img src="icons/cs2/equipment/awp.svg" alt="AWP">
 ```
 
 They are white artwork. They read on dark surfaces.
 
 ### CustomIconPack DOPAMINA
 
-File: `CustomIconPackDOPAMINA.ttf`. Intended keys from `defs.txt`:
+File: `icons/custom/dopamina.ttf`. Intended keys from `icons/custom/defs.txt`:
 
 | Key | Name |
 | --- | --- |
@@ -110,45 +119,43 @@ The font cmap stores those glyphs in the private-use area starting at `U+F000`. 
 
 ### Other icon fonts
 
-- `iconsV2.ttf` — second custom pack. Inspect the glyph in the preview before using it.
-- `tab_icon.ttf` — tiny, a few glyphs.
-- `fa-solid-900(2).ttf` and `Font Awesome 7 Free-Solid-900.otf` — loose FA files. Prefer `releases/v7.3.0`.
-- `fonts/*.hpp` — C++ embeds. Extracted copies: `preview/extracted/` (`weapons.ttf`, `pixel7.ttf`, `mochi.bdf`, `pretzel.bdf`).
+- `icons/custom/iconsv2.ttf` — second custom pack. Inspect the glyph in the preview before using it.
+- `icons/custom/tab.ttf` — tiny, a few glyphs.
+- `icons/fontawesome/loose/` — leftover FA files. Prefer `icons/fontawesome/v7.3.0`.
+- `embeds/*.hpp` — C++ embeds. Extracted copies: `embeds/extracted/`.
 
 ---
 
 ## Fonts
 
-Local files at the repo root stay the defaults. Extra open-source families live in `typefaces/<slug>/` (OFL / Apache / UFL, each folder keeps its license). Refresh with `python tools/download_open_fonts.py`, then `python tools/build_catalog.py`.
+Every text face lives in `typefaces/<slug>/` (OFL / Apache / UFL, each folder keeps its license). Refresh with `python tools/download_open_fonts.py`, then `python tools/build_catalog.py`.
 
 | Use | File | Family |
 | --- | --- | --- |
-| UI body / labels | `Montserrat-VariableFont_wght.ttf` or `typefaces/inter/` | Montserrat / Inter |
-| UI italic | `Montserrat-Italic-VariableFont_wght.ttf` | Montserrat Italic |
-| Static Montserrat cuts | `static/Montserrat-*.ttf` | when variable fonts cannot be used |
-| Titles / display | `league-spartan-sb(1).ttf` or `typefaces/oswald/`, `typefaces/syne/` | League Spartan, Oswald, Syne |
-| Dense small UI | `tahomabd.ttf` | Tahoma Bold |
-| Readable small body | `verdana-regular.ttf` | Verdana Regular |
-| Bold wide-coverage sans | `KlokanTechNotoSans-Bold(1).ttf` or `typefaces/notosans/` | Noto Sans |
+| UI body / labels | `typefaces/montserrat/` or `typefaces/inter/` | Montserrat / Inter |
+| Titles / display | `typefaces/leaguespartan/`, `typefaces/oswald/`, `typefaces/syne/` | League Spartan, Oswald, Syne |
+| Dense small UI | `typefaces/tahoma/Tahoma-Bold.ttf` | Tahoma Bold |
+| Readable small body | `typefaces/verdana/Verdana-Regular.ttf` | Verdana Regular |
+| Wide-coverage sans | `typefaces/notosans/` or `typefaces/klokantech-noto/` | Noto Sans |
 | Code / logs | `typefaces/jetbrainsmono/`, `typefaces/firacode/` | JetBrains Mono, Fira Code |
 
 ```css
 @font-face {
   font-family: Montserrat;
-  src: url("Montserrat-VariableFont_wght.ttf") format("truetype");
+  src: url("typefaces/montserrat/Montserrat[wght].ttf") format("truetype");
   font-weight: 100 900;
 }
 ```
 
 Do not mix unrelated display faces in one UI. One family for UI, one for titles if needed.
 
-Embedded bitmap fonts (`mochi`, `pretzel`) are BDF, not `@font-face` TTFs. Render from the catalog bitmaps or the C++ bytes in `fonts/*.hpp`.
+Embedded bitmap fonts (`mochi`, `pretzel`) are BDF, not `@font-face` TTFs. Render from the catalog bitmaps or the C++ bytes in `embeds/*.hpp`.
 
 ---
 
 ## UI references
 
-`Websites.txt` and `catalog/refs.json` are the same list. Open them before designing or implementing UI. The preview **Refs** tab lists them too.
+`catalog/Websites.txt` and `catalog/refs.json` are the same list. Open them before designing or implementing UI. The preview **Refs** tab lists them too.
 
 | Site | Why |
 | --- | --- |

@@ -31,12 +31,12 @@ Read `catalog/icons.json` for collection rules and every icon. Fonts are in `cat
 
 ## Default picks
 
-1. CS2 weapons, grenades, armor, kits → `cs2/equipment/<name>.svg`
-2. Custom overlay set (crosshair, eye, globe, weapon, sliders, gear) → `CustomIconPackDOPAMINA.ttf` (`A`–`F`, see `defs.txt`)
+1. CS2 weapons, grenades, armor, kits → `icons/cs2/equipment/<name>.svg`
+2. Custom overlay set (crosshair, eye, globe, weapon, sliders, gear) → `icons/custom/dopamina.ttf` (`A`–`F`, see `icons/custom/defs.txt`)
 3. General UI icons → Font Awesome 7.3 solid: `fa-solid fa-<name>`
 4. Brand logos → `fa-brands fa-<name>`
-5. Lighter line/fill icons → `remixicon.ttf`
-6. UI text → Montserrat or Inter. Titles → League Spartan, Oswald, or Syne. Dense small UI → Tahoma Bold or Verdana. Code → JetBrains Mono or Fira Code. More faces in `typefaces/`
+5. Lighter line/fill icons → `icons/remix/remixicon.ttf`
+6. UI text → Montserrat or Inter. Titles → League Spartan, Oswald, or Syne. Dense small UI → Tahoma Bold or Verdana. Code → JetBrains Mono or Fira Code. Faces in `typefaces/`
 7. Do not use FA 6/5 unless the consuming project is pinned to that version
 
-C++ embeds live in `fonts/*.hpp`. Extracted copies are in `preview/extracted/`.
+C++ embeds live in `embeds/*.hpp`. Extracted copies are in `embeds/extracted/`.

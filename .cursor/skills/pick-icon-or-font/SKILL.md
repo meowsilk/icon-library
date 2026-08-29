@@ -19,16 +19,16 @@ Then read `catalog/icons.json` or `catalog/fonts.json` only if the ranking is am
 
 ## Prefer, in order
 
-1. CS2 equipment art → `cs2` collection, path `cs2/equipment/<name>.svg`
-2. Custom overlay pack (crosshair, eye, globe, weapon, sliders, gear) → `dopamina` / `CustomIconPackDOPAMINA.ttf`, codes `A`–`F` in `defs.txt`
+1. CS2 equipment art → `cs2` collection, path `icons/cs2/equipment/<name>.svg`
+2. Custom overlay pack (crosshair, eye, globe, weapon, sliders, gear) → `dopamina` / `icons/custom/dopamina.ttf`, codes `A`–`F` in `icons/custom/defs.txt`
 3. General UI → `fa-7.3.0` solid, class `fa-solid fa-<name>`
 4. Brand logos → `fa-brands fa-<name>`
-5. Line/fill UI when Remix names fit better → `remix` / `remixicon.ttf`
+5. Line/fill UI when Remix names fit better → `remix` / `icons/remix/remixicon.ttf`
 6. Type: Montserrat or Inter for UI, League Spartan / Oswald / Syne for titles, Tahoma Bold or Verdana for dense small text, JetBrains Mono or Fira Code for code. Search `typefaces/` via `python tools/search.py --kind font`
 
 Do not pick FA 6 or FA 5 unless the consuming project is pinned to that version.
 
-When building UI, open the sites in `catalog/refs.json` / `Websites.txt`. Do not invent purple glass, glow borders, or fake dashboards.
+When building UI, open the sites in `catalog/refs.json` / `catalog/Websites.txt`. Do not invent purple glass, glow borders, or fake dashboards.
 
 ## Return
 

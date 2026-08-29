@@ -11,6 +11,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "catalog"
 PREVIEW = ROOT / "preview"
+ICONS = ROOT / "icons"
+EMBEDS = ROOT / "embeds"
 
 CSS_ICON_RE = re.compile(
     r"((?:\.fa-[a-zA-Z0-9-]+)+)\{[^}]*?--fa:((?:\"[^\"]*\"|'[^']*'))"
@@ -119,7 +121,7 @@ def parse_fa_style(css_path: Path, version: str) -> dict:
 
 
 def load_fa_release(version: str) -> dict:
-    rel = ROOT / "releases" / f"v{version}"
+    rel = ICONS / "fontawesome" / f"v{version}"
     css_dir = rel / "css"
     core = (css_dir / "fontawesome.css").read_text(encoding="utf-8", errors="replace")
     version5 = version.startswith("5.")
@@ -146,7 +148,7 @@ def load_fa_release(version: str) -> dict:
         "name": f"Font Awesome {version}",
         "kind": "fa",
         "version": version,
-        "cssBase": f"releases/v{version}/css/",
+        "cssBase": f"icons/fontawesome/v{version}/css/",
         "coreCss": "fontawesome.css",
         "styles": styles,
         "icons": icons,
@@ -422,10 +424,10 @@ def parse_defs(path: Path) -> list[dict]:
 
 
 def extract_hpp_fonts() -> list[dict]:
-    out_dir = PREVIEW / "extracted"
+    out_dir = EMBEDS / "extracted"
     out_dir.mkdir(parents=True, exist_ok=True)
     fonts = []
-    for hpp in sorted((ROOT / "fonts").glob("*.hpp")):
+    for hpp in sorted(EMBEDS.glob("*.hpp")):
         text = hpp.read_text(encoding="utf-8", errors="replace")
         m = HPP_ARRAY_RE.search(text)
         if not m:
@@ -445,12 +447,12 @@ def extract_hpp_fonts() -> list[dict]:
                 "name": name,
                 "kind": kind,
                 "path": rel,
-                "source": f"fonts/{hpp.name}",
+                "source": f"embeds/{hpp.name}",
                 "family": info["family"],
                 "subfamily": info["subfamily"],
                 "glyphCount": info["glyphCount"],
                 "format": info.get("format"),
-                "use": f"Embedded C++ {fmt} from fonts/{hpp.name}",
+                "use": f"Embedded C++ {fmt} from embeds/{hpp.name}",
             }
         )
         icons = []
@@ -466,7 +468,7 @@ def extract_hpp_fonts() -> list[dict]:
             "kind": "bdf" if fmt == "bdf" else "iconfont",
             "fontUrl": rel,
             "fontFamily": f"Embedded {info['family']}",
-            "useWhen": f"C++ embed from fonts/{hpp.name}.",
+            "useWhen": f"C++ embed from embeds/{hpp.name}.",
             "icons": icons,
         }
     return fonts
@@ -517,20 +519,22 @@ def main() -> None:
     fa5["useWhen"] = "Only when a project is pinned to FA 5."
     collections.append(fa5)
 
-    remix = inspect_font(ROOT / "remixicon.ttf")
+    remix_path = ICONS / "remix" / "remixicon.ttf"
+    remix = inspect_font(remix_path)
     remix_col = {
         "id": "remix",
         "name": "Remix Icon",
         "kind": "iconfont",
-        "fontUrl": "remixicon.ttf",
+        "fontUrl": remix_path.relative_to(ROOT).as_posix(),
         "fontFamily": "RemixIcon Library",
         "useWhen": "Line/fill UI icons when FA feels too heavy or a Remix name fits better.",
         "icons": [{"name": g["name"], "aliases": [], "unicode": g["unicode"]} for g in remix["glyphs"]],
     }
     collections.append(remix_col)
 
-    dopamina = inspect_font(ROOT / "CustomIconPackDOPAMINA.ttf")
-    defs = parse_defs(ROOT / "defs.txt")
+    dop_path = ICONS / "custom" / "dopamina.ttf"
+    dopamina = inspect_font(dop_path)
+    defs = parse_defs(ICONS / "custom" / "defs.txt")
     dop_icons = []
     for g in dopamina["glyphs"]:
         dop_icons.append({"name": g["name"], "aliases": [], "unicode": g["unicode"]})
@@ -547,20 +551,19 @@ def main() -> None:
             "id": "dopamina",
             "name": "CustomIconPack DOPAMINA",
             "kind": "iconfont",
-            "fontUrl": "CustomIconPackDOPAMINA.ttf",
+            "fontUrl": dop_path.relative_to(ROOT).as_posix(),
             "fontFamily": "CustomIconPack DOPAMINA",
             "useWhen": "Custom overlay pack. Known map: A crosshair, B eye, C globe, D weapon, E sliders, F gear.",
             "icons": dop_icons,
         }
     )
 
-    for ttf, label, when in (
-        ("iconsV2.ttf", "iconsV2", "Second custom icon font. Inspect glyphs before using."),
-        ("tab_icon.ttf", "tab_icon", "Tiny custom font, likely a single tab glyph."),
-        ("fa-solid-900(2).ttf", "FA Solid 900 (loose TTF)", "Loose FA solid file. Prefer releases/v7.3.0."),
-        ("Font Awesome 7 Free-Solid-900.otf", "FA 7 Free Solid", "Free solid subset. Prefer Pro 7.3 in this library."),
+    for path, label, when in (
+        (ICONS / "custom" / "iconsv2.ttf", "iconsV2", "Second custom icon font. Inspect glyphs before using."),
+        (ICONS / "custom" / "tab.ttf", "tab_icon", "Tiny custom font, likely a single tab glyph."),
+        (ICONS / "fontawesome" / "loose" / "fa-solid-900.ttf", "FA Solid 900 (loose TTF)", "Loose FA solid file. Prefer icons/fontawesome/v7.3.0."),
+        (ICONS / "fontawesome" / "loose" / "fa-7-free-solid-900.otf", "FA 7 Free Solid", "Free solid subset. Prefer Pro 7.3 in this library."),
     ):
-        path = ROOT / ttf
         if not path.exists():
             continue
         info = inspect_font(path)
@@ -569,7 +572,7 @@ def main() -> None:
                 "id": slug(label),
                 "name": label,
                 "kind": "iconfont",
-                "fontUrl": ttf,
+                "fontUrl": path.relative_to(ROOT).as_posix(),
                 "fontFamily": f"Lib {info['family']}",
                 "useWhen": when,
                 "icons": [{"name": g["name"], "aliases": [], "unicode": g["unicode"]} for g in info["glyphs"]],
@@ -577,7 +580,7 @@ def main() -> None:
         )
 
     cs2 = []
-    for svg in sorted((ROOT / "cs2" / "equipment").glob("*.svg")):
+    for svg in sorted((ICONS / "cs2" / "equipment").glob("*.svg")):
         name = svg.stem
         tags = [p for p in name.split("_") if p]
         cs2.append(
@@ -597,48 +600,7 @@ def main() -> None:
         }
     )
 
-    fonts = [
-        text_font_entry(
-            ROOT / "Montserrat-VariableFont_wght.ttf",
-            name="Montserrat Variable",
-            family="Montserrat",
-            kind="variable",
-            axis="wght 100-900",
-            use="Primary UI sans. Variable weight.",
-        ),
-        text_font_entry(
-            ROOT / "Montserrat-Italic-VariableFont_wght.ttf",
-            name="Montserrat Italic Variable",
-            family="Montserrat",
-            kind="variable-italic",
-            axis="wght 100-900",
-            use="Italic companion for Montserrat.",
-        ),
-        text_font_entry(
-            ROOT / "KlokanTechNotoSans-Bold(1).ttf",
-            name="KlokanTech Noto Sans Bold",
-            family="KlokanTech Noto Sans",
-            use="Bold UI / map-style sans with wide language coverage.",
-        ),
-        text_font_entry(
-            ROOT / "league-spartan-sb(1).ttf",
-            name="League Spartan SemiBold",
-            family="League Spartan",
-            use="Compact geometric display / titles.",
-        ),
-        text_font_entry(
-            ROOT / "tahomabd.ttf",
-            name="Tahoma Bold",
-            family="Tahoma",
-            use="Dense UI, Win32-adjacent labels.",
-        ),
-        text_font_entry(
-            ROOT / "verdana-regular.ttf",
-            name="Verdana Regular",
-            family="Verdana",
-            use="Readable small-size UI body.",
-        ),
-    ]
+    fonts = []
     typefaces_root = ROOT / "typefaces"
     if typefaces_root.exists():
         for font_file in sorted(typefaces_root.rglob("*")):
@@ -685,19 +647,6 @@ def main() -> None:
                 )
             )
 
-    for static in sorted((ROOT / "static").glob("Montserrat-*.ttf")):
-        italic = "Italic" in static.stem
-        weight = static.stem.replace("Montserrat-", "").replace("Italic", "") or "Regular"
-        fonts.append(
-            text_font_entry(
-                static,
-                name=f"Montserrat {weight}{' Italic' if italic else ''}",
-                family="Montserrat Static",
-                kind="static",
-                use="Static Montserrat cut when variable fonts are unavailable.",
-            )
-        )
-
     embedded = extract_hpp_fonts()
     for emb in embedded:
         col = emb.pop("_collection", None)
@@ -706,14 +655,14 @@ def main() -> None:
     fonts.extend(embedded)
 
     rules = [
-        "CS2 weapons, grenades, armor, kits → collection cs2 (SVG paths under cs2/equipment/).",
-        "Custom overlay set (crosshair, eye, globe, weapon, sliders, gear) → dopamina / CustomIconPackDOPAMINA.ttf, codes A–F from defs.txt.",
-        "General UI icons → fa-7.3.0, style solid, class `fa-solid fa-<name>`.",
+        "CS2 weapons, grenades, armor, kits → collection cs2 (SVG paths under icons/cs2/equipment/).",
+        "Custom overlay set (crosshair, eye, globe, weapon, sliders, gear) → dopamina / icons/custom/dopamina.ttf, codes A–F from icons/custom/defs.txt.",
+        "General UI icons → fa-7.3.0, style solid, class `fa-solid fa-<name>`. CSS in icons/fontawesome/v7.3.0/.",
         "Brand logos → fa-7.3.0 style brands, class `fa-brands fa-<name>`.",
-        "Lighter line icons → remix (remixicon.ttf) when a Remix name is a better match.",
+        "Lighter line icons → remix (icons/remix/remixicon.ttf) when a Remix name is a better match.",
         "Do not use FA 6/5 unless the consuming project is pinned to that version.",
-        "UI text → Montserrat or Inter. Titles → League Spartan, Oswald, or Syne. Dense small UI → Tahoma Bold or Verdana. Code → JetBrains Mono or Fira Code. More faces in typefaces/.",
-        "C++ embedded fonts live in fonts/*.hpp; extracted copies are preview/extracted/*.ttf.",
+        "UI text → Montserrat or Inter. Titles → League Spartan, Oswald, or Syne. Dense small UI → Tahoma Bold or Verdana. Code → JetBrains Mono or Fira Code. Faces live in typefaces/.",
+        "C++ embeds live in embeds/*.hpp; extracted copies are embeds/extracted/.",
     ]
     write_json(
         CATALOG / "icons.json",

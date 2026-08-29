@@ -3,68 +3,6 @@
   "search": "python tools/search.py --kind font <query>",
   "fonts": [
     {
-      "id": "montserrat-variablefont-wght",
-      "name": "Montserrat Variable",
-      "kind": "variable",
-      "path": "Montserrat-VariableFont_wght.ttf",
-      "family": "Montserrat",
-      "subfamily": "Regular",
-      "glyphCount": 1309,
-      "axis": "wght 100-900",
-      "use": "Primary UI sans. Variable weight."
-    },
-    {
-      "id": "montserrat-italic-variablefont-wght",
-      "name": "Montserrat Italic Variable",
-      "kind": "variable-italic",
-      "path": "Montserrat-Italic-VariableFont_wght.ttf",
-      "family": "Montserrat",
-      "subfamily": "Italic",
-      "glyphCount": 1309,
-      "axis": "wght 100-900",
-      "use": "Italic companion for Montserrat."
-    },
-    {
-      "id": "klokantechnotosans-bold-1",
-      "name": "KlokanTech Noto Sans Bold",
-      "kind": "text",
-      "path": "KlokanTechNotoSans-Bold(1).ttf",
-      "family": "KlokanTech Noto Sans",
-      "subfamily": "Bold",
-      "glyphCount": 5570,
-      "use": "Bold UI / map-style sans with wide language coverage."
-    },
-    {
-      "id": "league-spartan-sb-1",
-      "name": "League Spartan SemiBold",
-      "kind": "text",
-      "path": "league-spartan-sb(1).ttf",
-      "family": "League Spartan",
-      "subfamily": "Regular",
-      "glyphCount": 559,
-      "use": "Compact geometric display / titles."
-    },
-    {
-      "id": "tahomabd",
-      "name": "Tahoma Bold",
-      "kind": "text",
-      "path": "tahomabd.ttf",
-      "family": "Tahoma",
-      "subfamily": "Bold",
-      "glyphCount": 2885,
-      "use": "Dense UI, Win32-adjacent labels."
-    },
-    {
-      "id": "verdana-regular",
-      "name": "Verdana Regular",
-      "kind": "text",
-      "path": "verdana-regular.ttf",
-      "family": "Verdana",
-      "subfamily": "Regular",
-      "glyphCount": 678,
-      "use": "Readable small-size UI body."
-    },
-    {
       "id": "abrilfatface-regular",
       "name": "AbrilFatface-Regular",
       "kind": "static",
@@ -2789,6 +2727,18 @@
       "use": "Open-source UI sans."
     },
     {
+      "id": "klokantechnotosans-bold",
+      "name": "KlokanTechNotoSans-Bold",
+      "kind": "static",
+      "path": "typefaces/klokantech-noto/KlokanTechNotoSans-Bold.ttf",
+      "family": "klokantech-noto",
+      "subfamily": "Bold",
+      "glyphCount": 5570,
+      "license": "open-source",
+      "source": "typefaces/klokantech-noto",
+      "use": "Open-source UI sans."
+    },
+    {
       "id": "lato-black",
       "name": "Lato-Black",
       "kind": "static",
@@ -3002,6 +2952,18 @@
       "glyphCount": 2195,
       "license": "open-source",
       "source": "typefaces/lato",
+      "use": "Open-source UI sans."
+    },
+    {
+      "id": "leaguespartan-semibold",
+      "name": "LeagueSpartan-SemiBold",
+      "kind": "static",
+      "path": "typefaces/leaguespartan/LeagueSpartan-SemiBold.ttf",
+      "family": "League Spartan",
+      "subfamily": "Regular",
+      "glyphCount": 559,
+      "license": "open-source",
+      "source": "typefaces/leaguespartan",
       "use": "Open-source UI sans."
     },
     {
@@ -4685,6 +4647,18 @@
       "use": "Display / titles."
     },
     {
+      "id": "tahoma-bold",
+      "name": "Tahoma-Bold",
+      "kind": "static",
+      "path": "typefaces/tahoma/Tahoma-Bold.ttf",
+      "family": "tahoma",
+      "subfamily": "Bold",
+      "glyphCount": 2885,
+      "license": "open-source",
+      "source": "typefaces/tahoma",
+      "use": "Open-source UI sans."
+    },
+    {
       "id": "titilliumweb-black",
       "name": "TitilliumWeb-Black",
       "kind": "static",
@@ -4997,6 +4971,18 @@
       "use": "Open-source UI sans."
     },
     {
+      "id": "verdana-regular",
+      "name": "Verdana-Regular",
+      "kind": "static",
+      "path": "typefaces/verdana/Verdana-Regular.ttf",
+      "family": "verdana",
+      "subfamily": "Regular",
+      "glyphCount": 678,
+      "license": "open-source",
+      "source": "typefaces/verdana",
+      "use": "Open-source UI sans."
+    },
+    {
       "id": "vollkorn-italic-wght",
       "name": "Vollkorn-Italic wght ",
       "kind": "variable",
@@ -5189,232 +5175,52 @@
       "use": "Serif. Long text and editorial UI."
     },
     {
-      "id": "montserrat-black",
-      "name": "Montserrat Black",
-      "kind": "static",
-      "path": "static/Montserrat-Black.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Regular",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-blackitalic",
-      "name": "Montserrat Black Italic",
-      "kind": "static",
-      "path": "static/Montserrat-BlackItalic.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Italic",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-bold",
-      "name": "Montserrat Bold",
-      "kind": "static",
-      "path": "static/Montserrat-Bold.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Bold",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-bolditalic",
-      "name": "Montserrat Bold Italic",
-      "kind": "static",
-      "path": "static/Montserrat-BoldItalic.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Bold Italic",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-extrabold",
-      "name": "Montserrat ExtraBold",
-      "kind": "static",
-      "path": "static/Montserrat-ExtraBold.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Regular",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-extrabolditalic",
-      "name": "Montserrat ExtraBold Italic",
-      "kind": "static",
-      "path": "static/Montserrat-ExtraBoldItalic.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Italic",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-extralight",
-      "name": "Montserrat ExtraLight",
-      "kind": "static",
-      "path": "static/Montserrat-ExtraLight.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Regular",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-extralightitalic",
-      "name": "Montserrat ExtraLight Italic",
-      "kind": "static",
-      "path": "static/Montserrat-ExtraLightItalic.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Italic",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-italic",
-      "name": "Montserrat Regular Italic",
-      "kind": "static",
-      "path": "static/Montserrat-Italic.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Italic",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-light",
-      "name": "Montserrat Light",
-      "kind": "static",
-      "path": "static/Montserrat-Light.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Regular",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-lightitalic",
-      "name": "Montserrat Light Italic",
-      "kind": "static",
-      "path": "static/Montserrat-LightItalic.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Italic",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-medium",
-      "name": "Montserrat Medium",
-      "kind": "static",
-      "path": "static/Montserrat-Medium.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Regular",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-mediumitalic",
-      "name": "Montserrat Medium Italic",
-      "kind": "static",
-      "path": "static/Montserrat-MediumItalic.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Italic",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-regular",
-      "name": "Montserrat Regular",
-      "kind": "static",
-      "path": "static/Montserrat-Regular.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Regular",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-semibold",
-      "name": "Montserrat SemiBold",
-      "kind": "static",
-      "path": "static/Montserrat-SemiBold.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Regular",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-semibolditalic",
-      "name": "Montserrat SemiBold Italic",
-      "kind": "static",
-      "path": "static/Montserrat-SemiBoldItalic.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Italic",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-thin",
-      "name": "Montserrat Thin",
-      "kind": "static",
-      "path": "static/Montserrat-Thin.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Regular",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
-      "id": "montserrat-thinitalic",
-      "name": "Montserrat Thin Italic",
-      "kind": "static",
-      "path": "static/Montserrat-ThinItalic.ttf",
-      "family": "Montserrat Static",
-      "subfamily": "Italic",
-      "glyphCount": 1309,
-      "use": "Static Montserrat cut when variable fonts are unavailable."
-    },
-    {
       "id": "embedded-mochi",
       "name": "mochi",
       "kind": "bdf",
-      "path": "preview/extracted/mochi.bdf",
-      "source": "fonts/mochi.hpp",
+      "path": "embeds/extracted/mochi.bdf",
+      "source": "embeds/mochi.hpp",
       "family": "-addy-mochi-Medium-R-Normal--12-120-75-75-M-50-ISO10646-1",
       "subfamily": null,
       "glyphCount": 1071,
       "format": "bdf",
-      "use": "Embedded C++ bdf from fonts/mochi.hpp"
+      "use": "Embedded C++ bdf from embeds/mochi.hpp"
     },
     {
       "id": "embedded-pixel7",
       "name": "pixel7",
       "kind": "icon-or-ui",
-      "path": "preview/extracted/pixel7.ttf",
-      "source": "fonts/pixel7.hpp",
+      "path": "embeds/extracted/pixel7.ttf",
+      "source": "embeds/pixel7.hpp",
       "family": "Smallest Pixel-7",
       "subfamily": "Regular",
       "glyphCount": 343,
       "format": "ttf",
-      "use": "Embedded C++ ttf from fonts/pixel7.hpp"
+      "use": "Embedded C++ ttf from embeds/pixel7.hpp"
     },
     {
       "id": "embedded-pretzel",
       "name": "pretzel",
       "kind": "bdf",
-      "path": "preview/extracted/pretzel.bdf",
-      "source": "fonts/pretzel.hpp",
+      "path": "embeds/extracted/pretzel.bdf",
+      "source": "embeds/pretzel.hpp",
       "family": "-addy-pretzel-Bold-R-Normal--12-80-100-100-M-60-ISO10646-1",
       "subfamily": null,
       "glyphCount": 379,
       "format": "bdf",
-      "use": "Embedded C++ bdf from fonts/pretzel.hpp"
+      "use": "Embedded C++ bdf from embeds/pretzel.hpp"
     },
     {
       "id": "embedded-weapons",
       "name": "weapons",
       "kind": "icon-or-ui",
-      "path": "preview/extracted/weapons.ttf",
-      "source": "fonts/weapons.hpp",
+      "path": "embeds/extracted/weapons.ttf",
+      "source": "embeds/weapons.hpp",
       "family": "CS2 Gun Icons",
       "subfamily": "Regular",
       "glyphCount": 63,
       "format": "ttf",
-      "use": "Embedded C++ ttf from fonts/weapons.hpp"
+      "use": "Embedded C++ ttf from embeds/weapons.hpp"
     }
   ]
 }
