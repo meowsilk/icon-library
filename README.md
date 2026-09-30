@@ -5,7 +5,7 @@ Icons and typefaces I use for UI. Search before you invent a name or a path.
 ```
 icons/       icon fonts and SVGs
 typefaces/   text faces, one folder per family
-embeds/      C++ .hpp bytes and extracted copies
+embeds/      C++ headers with font bytes, plus extracted copies
 catalog/     icons.json, fonts.json, refs.json
 preview/     local preview
 tools/       search and catalog build

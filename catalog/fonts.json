@@ -5179,48 +5179,48 @@
       "name": "mochi",
       "kind": "bdf",
       "path": "embeds/extracted/mochi.bdf",
-      "source": "embeds/mochi.hpp",
+      "source": "embeds/mochi.hxx",
       "family": "-addy-mochi-Medium-R-Normal--12-120-75-75-M-50-ISO10646-1",
       "subfamily": null,
       "glyphCount": 1071,
       "format": "bdf",
-      "use": "Embedded C++ bdf from embeds/mochi.hpp"
+      "use": "Embedded C++ bdf from embeds/mochi.hxx"
     },
     {
       "id": "embedded-pixel7",
       "name": "pixel7",
       "kind": "icon-or-ui",
       "path": "embeds/extracted/pixel7.ttf",
-      "source": "embeds/pixel7.hpp",
+      "source": "embeds/pixel7.hxx",
       "family": "Smallest Pixel-7",
       "subfamily": "Regular",
       "glyphCount": 343,
       "format": "ttf",
-      "use": "Embedded C++ ttf from embeds/pixel7.hpp"
+      "use": "Embedded C++ ttf from embeds/pixel7.hxx"
     },
     {
       "id": "embedded-pretzel",
       "name": "pretzel",
       "kind": "bdf",
       "path": "embeds/extracted/pretzel.bdf",
-      "source": "embeds/pretzel.hpp",
+      "source": "embeds/pretzel.hxx",
       "family": "-addy-pretzel-Bold-R-Normal--12-80-100-100-M-60-ISO10646-1",
       "subfamily": null,
       "glyphCount": 379,
       "format": "bdf",
-      "use": "Embedded C++ bdf from embeds/pretzel.hpp"
+      "use": "Embedded C++ bdf from embeds/pretzel.hxx"
     },
     {
       "id": "embedded-weapons",
       "name": "weapons",
       "kind": "icon-or-ui",
       "path": "embeds/extracted/weapons.ttf",
-      "source": "embeds/weapons.hpp",
+      "source": "embeds/weapons.hxx",
       "family": "CS2 Gun Icons",
       "subfamily": "Regular",
       "glyphCount": 63,
       "format": "ttf",
-      "use": "Embedded C++ ttf from embeds/weapons.hpp"
+      "use": "Embedded C++ ttf from embeds/weapons.hxx"
     }
   ]
 }

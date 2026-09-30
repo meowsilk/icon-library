@@ -109160,7 +109160,7 @@
       "kind": "bdf",
       "fontUrl": "embeds/extracted/mochi.bdf",
       "fontFamily": "Embedded -addy-mochi-Medium-R-Normal--12-120-75-75-M-50-ISO10646-1",
-      "useWhen": "C++ embed from embeds/mochi.hpp.",
+      "useWhen": "C++ embed from embeds/mochi.hxx.",
       "icons": [
         {
           "name": "exclam",
@@ -129832,7 +129832,7 @@
       "kind": "iconfont",
       "fontUrl": "embeds/extracted/pixel7.ttf",
       "fontFamily": "Embedded Smallest Pixel-7",
-      "useWhen": "C++ embed from embeds/pixel7.hpp.",
+      "useWhen": "C++ embed from embeds/pixel7.hxx.",
       "icons": [
         {
           "name": "exclam",
@@ -131557,7 +131557,7 @@
       "kind": "bdf",
       "fontUrl": "embeds/extracted/pretzel.bdf",
       "fontFamily": "Embedded -addy-pretzel-Bold-R-Normal--12-80-100-100-M-60-ISO10646-1",
-      "useWhen": "C++ embed from embeds/pretzel.hpp.",
+      "useWhen": "C++ embed from embeds/pretzel.hxx.",
       "icons": [
         {
           "name": "SPACE",
@@ -139342,7 +139342,7 @@
       "kind": "iconfont",
       "fontUrl": "embeds/extracted/weapons.ttf",
       "fontFamily": "Embedded CS2 Gun Icons",
-      "useWhen": "C++ embed from embeds/weapons.hpp.",
+      "useWhen": "C++ embed from embeds/weapons.hxx.",
       "icons": [
         {
           "name": "zero",
