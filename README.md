@@ -13,13 +13,19 @@ tools/       search and catalog build
 
 ## Preview
 
-Browse it here: https://ff0l.github.io/ff0l-icon-library/
-
-Locally:
+The site is the `preview/` folder. Locally:
 
 ```bash
 python serve.py
 ```
+
+On GitHub, after the repo is **public** (Pages on a private repo needs GitHub Pro):
+
+1. Settings → Pages
+2. Deploy from branch `main`, folder `/ (root)`
+3. Open https://ff0l1.github.io/icon-library/preview/
+
+`.nojekyll` is in the repo root so asset folders are served as-is.
 
 Opens `http://127.0.0.1:8765/preview/`. Click an icon, then **Download** to save just that file. **All sets** searches every icon collection. Rebuild after adding files:
 
