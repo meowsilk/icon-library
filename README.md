@@ -23,7 +23,7 @@ On GitHub, after the repo is **public** (Pages on a private repo needs GitHub Pr
 
 1. Settings → Pages
 2. Deploy from branch `main`, folder `/ (root)`
-3. Open https://ff0l1.github.io/icon-library/preview/
+3. Open https://meowsilk.github.io/icon-library/preview/
 
 `.nojekyll` is in the repo root so asset folders are served as-is.
 
